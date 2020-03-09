@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_edit">
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/txt_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:visibility="gone"/>
+
+        <EditText
+            android:id="@+id/txt_name"
+            android:layout_width="match_parent"
+            android:textAlignment="gravity"
+            android:gravity="left"
+            android:paddingHorizontal="10dp"
+            android:layout_height="140dp"
+            android:textColor="#000"
+            android:hint="Masukkan Soal"/>
+
+        <EditText
+            android:layout_below="@id/txt_name"
+            android:id="@+id/txt_jawaban1"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:hint="Masukkan jawaban pertama"/>
+
+        <EditText
+            android:layout_below="@id/txt_jawaban1"
+            android:id="@+id/txt_jawaban2"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:hint="Masukkan jawaban kedua"/>
+
+        <EditText
+            android:layout_below="@id/txt_jawaban2"
+            android:id="@+id/txt_jawaban3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:hint="Masukkan jawaban ketiga"/>
+
+        <EditText
+            android:layout_below="@id/txt_jawaban3"
+            android:id="@+id/txt_jawaban5"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:hint="Masukkan jawaban keempat"/>
+
+        <EditText
+            android:layout_below="@id/txt_jawaban5"
+            android:id="@+id/txt_jawaban4"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:hint="Masukkan jawaban benar"/>
+
+        <LinearLayout
+            android:layout_below="@id/txt_jawaban4"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Submit"/>
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_weight="0.5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cancel"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
