@@ -9,11 +9,8 @@ import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.bram41.tugasquizbackend.util.SessionManager;
-import com.bram41.tugasquizbackend.util.SqliteHelper;
-import com.bram41.tugasquizbackend.util.User;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -30,9 +27,6 @@ public class login extends AppCompatActivity {
     //Declaration Button
     Button buttonLogin;
 
-    //Declaration SqliteHelper
-    SqliteHelper sqliteHelper;
-
     // Session Manager Class
     SessionManager session;
 
@@ -42,10 +36,7 @@ public class login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         session = new SessionManager(getApplicationContext());
-
-        sqliteHelper = new SqliteHelper(this);
         initViews();
-        initCreateAccountTextView();
         //set click event of login button
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,23 +49,21 @@ public class login extends AppCompatActivity {
                     String Email = editTextEmail.getText().toString();
                     String Password = editTextPassword.getText().toString();
 
-                    //Authenticate user
-                    User currentUser = sqliteHelper.Authenticate(new User(null, null, Email, Password));
-
+                    String user = "admin";
                     //Check Authentication is successful or not
-                    if (currentUser != null) {
+                    if (user != null) {
                         Snackbar.make(buttonLogin, "Successfully Logged in!", Snackbar.LENGTH_LONG).show();
 
                         session.createLoginSession(""+Email,""+Password);
+                            // Staring home
+                            Intent i = new Intent(getApplicationContext(), home.class);
+                            startActivity(i);
+                            finish();
+                            //User Logged in Successfully Launch You home screen activity
+                            Intent intent=new Intent(login.this,home.class);
+                            startActivity(intent);
+                            finish();
 
-                        // Staring home
-                        Intent i = new Intent(getApplicationContext(), home.class);
-                        startActivity(i);
-                        finish();
-                        //User Logged in Successfully Launch You home screen activity
-                        Intent intent=new Intent(login.this,home.class);
-                        startActivity(intent);
-                        finish();
 
                     } else {
 
@@ -89,19 +78,6 @@ public class login extends AppCompatActivity {
 
     }
 
-    private void initCreateAccountTextView() {
-        TextView textViewCreateAccount = (TextView) findViewById(R.id.textViewCreateAccount);
-        textViewCreateAccount.setText(fromHtml("<font color='#ffffff'>I don't have account yet. </font><font color='#0c0099'>create one</font>"));
-        textViewCreateAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editTextEmail.getText().clear();
-                editTextPassword.getText().clear();
-                Intent intent = new Intent(login.this, register.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     //this method is used to connect XML views to its Objects
     private void initViews() {
@@ -132,9 +108,11 @@ public class login extends AppCompatActivity {
         //Get values from EditText fields
         String Email = editTextEmail.getText().toString();
         String Password = editTextPassword.getText().toString();
+        String mail = "admin";
+        String pass = "admin";
 
         //Handling validation for Email field
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
+        if (!mail.equals(Email)) {
             valid = false;
             textInputLayoutEmail.setError("Please enter valid email!");
         } else {
@@ -145,14 +123,14 @@ public class login extends AppCompatActivity {
         //Handling validation for Password field
         if (Password.isEmpty()) {
             valid = false;
-            textInputLayoutPassword.setError("Please enter valid password!");
+            textInputLayoutPassword.setError("Please insert password!");
         } else {
-            if (Password.length() > 5) {
+            if (!mail.equals(Password)) {
+                valid = false;
+                textInputLayoutPassword.setError("Please enter valid password!");
+            } else {
                 valid = true;
                 textInputLayoutPassword.setError(null);
-            } else {
-                valid = false;
-                textInputLayoutPassword.setError("Password is to short!");
             }
         }
 
@@ -161,10 +139,9 @@ public class login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent intent = new Intent(login.this, welcome.class);
         startActivity(intent);
+        finish();
     }
 
 }

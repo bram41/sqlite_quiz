@@ -9,12 +9,14 @@
         android:roundIcon="@drawable/ic_quiz"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hasil"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-        <activity android:name=".soal"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".welcome"></activity>
+        <activity
+            android:name=".hasil"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".soal"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".add_edit" />
-        <activity android:name=".register" />
         <activity android:name=".login" />
         <activity android:name=".home" />
         <activity

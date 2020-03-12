@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.bram41.tugasquizbackend.login;
+import com.bram41.tugasquizbackend.welcome;
 
 public class SessionManager {
     // Shared Preferences
@@ -88,7 +89,7 @@ public class SessionManager {
         editor.commit();
 
         // After logout redirect user to Loing Activity
-        Intent i = new Intent(_context, login.class);
+        Intent i = new Intent(_context, welcome.class);
         // Closing all the Activities
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
