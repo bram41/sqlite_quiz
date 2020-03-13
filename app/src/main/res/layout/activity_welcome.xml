@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".welcome">
     <RelativeLayout
+        android:background="@drawable/bg_dua"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageButton

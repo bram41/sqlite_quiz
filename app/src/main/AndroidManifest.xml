@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/ic_quiz"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".welcome"></activity>
+        <activity android:name=".welcome"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".hasil"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
